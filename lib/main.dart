@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:mpcore/mpcore.dart';
+import 'package:mpflutter_template/page/home_page.dart';
 import 'package:mpflutter_template/second_page.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'MPFlutter Demo',
       color: Colors.blue,
       routes: {
-        '/': (context) => MyHomePage(),
+        '/': (context) => HomePage(),
         '/second': (context) => MySecondPage(),
       },
       navigatorObservers: [MPCore.getNavigationObserver()],
