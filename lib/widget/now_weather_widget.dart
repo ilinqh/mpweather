@@ -11,24 +11,29 @@ class NowWeatherWidget extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           _renderTitle(),
-          // _renderBody(),
+          _renderBody(),
         ],
       ),
     );
   }
 
   Widget _renderTitle() {
-    return Container(
-      height: 70,
-      margin: EdgeInsets.symmetric(vertical: 60),
-      alignment: Alignment.center,
-      child: Text(
-        'placeName',
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 22,
+    return Positioned(
+      top: 0,
+      left: 0,
+      right: 0,
+      child: Container(
+        height: 70,
+        margin: EdgeInsets.symmetric(horizontal: 60),
+        alignment: Alignment.center,
+        child: Text(
+          'placeName',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 22,
+          ),
         ),
       ),
     );
@@ -38,6 +43,7 @@ class NowWeatherWidget extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             'currentTemp',
