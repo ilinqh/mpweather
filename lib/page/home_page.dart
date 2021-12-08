@@ -9,6 +9,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MPScaffold(
       name: 'home_page',
+      appBar: MPAppBar(
+        context: context,
+        leading: SizedBox(),
+        title: _renderActionBar(),
+      ),
       body: Stack(
         children: [
           Positioned.fill(
@@ -22,7 +27,6 @@ class HomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _renderActionBar(),
                 _renderCityList(),
               ],
             ),

@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:mpcore/mpcore.dart';
+import 'package:mpflutter_template/widget/now_weather_widget.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MPScaffold(
+      name: 'weather_page',
+      // appBar: MPAppBar(
+      //   context: context,
+      //   title: Container(),
+      // ),
+      body: NowWeatherWidget(),
+    );
   }
 }
