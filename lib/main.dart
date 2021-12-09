@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:mpcore/mpcore.dart';
-import 'package:mpflutter_template/page/home_page.dart';
-import 'package:mpflutter_template/page/weather_page.dart';
+import 'package:weather_project/page/home_page.dart';
+import 'package:weather_project/page/weather_page.dart';
 
 void main() {
   runApp(MyApp());
