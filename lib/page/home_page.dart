@@ -56,43 +56,48 @@ class HomePage extends StatelessWidget {
       child: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
-          return Container(
-            height: 130,
-            margin: EdgeInsets.all(12),
-            padding: EdgeInsets.all(18),
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              color: index % 2 == 0 ? Colors.amber : Colors.brown,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  offset: Offset(0, 1),
-                  blurRadius: 2,
-                  spreadRadius: 1,
-                ),
-              ],
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'placeName $index',
-                  style: TextStyle(
-                    color: ColorConstant.color333333,
-                    fontSize: 20,
+          return GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed('/weather');
+            },
+            child: Container(
+              height: 130,
+              margin: EdgeInsets.all(12),
+              padding: EdgeInsets.all(18),
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: index % 2 == 0 ? Colors.amber : Colors.brown,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    offset: Offset(0, 1),
+                    blurRadius: 2,
+                    spreadRadius: 1,
                   ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'placeAddress $index',
-                  style: TextStyle(
-                    color: ColorConstant.color666666,
-                    fontSize: 14,
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'placeName $index',
+                    style: TextStyle(
+                      color: ColorConstant.color333333,
+                      fontSize: 20,
+                    ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 10),
+                  Text(
+                    'placeAddress $index',
+                    style: TextStyle(
+                      color: ColorConstant.color666666,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },

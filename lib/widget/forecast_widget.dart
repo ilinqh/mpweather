@@ -9,20 +9,33 @@ class ForecastWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 15, top: 15, right: 15),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(4)),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(4),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            offset: Offset(0, 1),
+            blurRadius: 2,
+            spreadRadius: 1,
+          ),
+        ],
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '预报',
-            style: TextStyle(color: ColorConstant.colorPrimary, fontSize: 20),
+          Container(
+            margin: EdgeInsets.only(left: 15, top: 20, bottom: 20),
+            child: Text(
+              '预报',
+              style: TextStyle(color: ColorConstant.colorPrimary, fontSize: 20),
+            ),
           ),
           SizedBox(height: 20),
           ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            itemCount: 10,
+            itemCount: 6,
             itemBuilder: (context, index) {
               return ForecastItemWidget();
             },

@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 class NowWeatherWidget extends StatelessWidget {
   const NowWeatherWidget({Key? key}) : super(key: key);
 
+  final _subTitleStyle = const TextStyle(
+    color: Colors.white,
+    fontSize: 18,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -10,11 +15,16 @@ class NowWeatherWidget extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
+          _renderSkyBg(),
           _renderTitle(),
           _renderBody(),
         ],
       ),
     );
+  }
+
+  Widget _renderSkyBg() {
+    return Image.asset('assets/images/bg_clear_day.jpg', fit: BoxFit.cover);
   }
 
   Widget _renderTitle() {
@@ -53,27 +63,19 @@ class NowWeatherWidget extends StatelessWidget {
             ),
           ),
           Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 'currentSky',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
+                style: _subTitleStyle,
               ),
               Text(
                 ' | ',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
+                style: _subTitleStyle,
               ),
               Text(
                 'currentAQI',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
+                style: _subTitleStyle,
               ),
             ],
           ),
