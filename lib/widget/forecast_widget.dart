@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mpflutter_template/color_constant.dart';
-import 'package:mpflutter_template/widget/forecast_item_widget.dart';
+import 'package:weather_project/color_constant.dart';
+import 'package:weather_project/widget/forecast_item_widget.dart';
 
 class ForecastWidget extends StatelessWidget {
   const ForecastWidget({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mpcore/mpcore.dart';
-import 'package:mpflutter_template/widget/forecast_widget.dart';
-import 'package:mpflutter_template/widget/life_index_widget.dart';
-import 'package:mpflutter_template/widget/now_weather_widget.dart';
+import 'package:weather_project/widget/forecast_widget.dart';
+import 'package:weather_project/widget/life_index_widget.dart';
+import 'package:weather_project/widget/now_weather_widget.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({Key? key}) : super(key: key);

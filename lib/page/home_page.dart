@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mpcore/mpcore.dart';
-import 'package:mpflutter_template/color_constant.dart';
+import 'package:weather_project/color_constant.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

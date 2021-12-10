@@ -3,11 +3,7 @@ class Sky {
   String icon;
   String bg;
 
-  Sky(
-    this.info,
-    this.icon,
-    this.bg,
-  );
+  Sky(this.info, this.icon, this.bg);
 
   var _sky = {
     "CLEAR_DAY": Sky(

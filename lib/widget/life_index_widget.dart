@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mpflutter_template/color_constant.dart';
+import 'package:weather_project/color_constant.dart';
 
 class LifeIndexWidget extends StatelessWidget {
   const LifeIndexWidget({Key? key}) : super(key: key);
