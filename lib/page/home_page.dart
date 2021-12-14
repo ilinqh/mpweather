@@ -1,9 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:mpcore/mpcore.dart';
+import 'package:weather_project/bean/place.dart';
 import 'package:weather_project/color_constant.dart';
+import 'package:weather_project/network/place_service.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late TextEditingController _controller;
+  var placeList = <Place>[];
+
+  var inputEmpty = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController()
+      ..addListener(() {
+        searchPlace(place: _controller.text);
+      });
+  }
+
+  Future searchPlace({required String place}) async {
+    setState(() {
+      placeList.clear();
+      inputEmpty = place.isEmpty;
+    });
+    if (place.isEmpty) {
+      return;
+    }
+    final response = PlaceService.searchPlace(place: place);
+    placeList.addAll(response);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,21 +49,8 @@ class HomePage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Positioned.fill(
-            child: Image.asset(
-              'assets/images/bg_place.png',
-              fit: BoxFit.cover,
-            ),
-          ),
-          Positioned.fill(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                _renderCityList(),
-              ],
-            ),
-          ),
+          _renderBackground(),
+          _renderContent(),
         ],
       ),
     );
@@ -39,6 +59,7 @@ class HomePage extends StatelessWidget {
   Widget _renderActionBar() {
     return Container(
       height: 60,
+      width: double.infinity,
       color: ColorConstant.colorPrimary,
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       child: Container(
@@ -46,16 +67,86 @@ class HomePage extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           color: Colors.white,
         ),
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: MPEditableText(
+          controller: _controller,
+          focusNode: FocusNode(),
+          placeholder: 'input place here~',
+          placeholderStyle: TextStyle(
+            fontSize: 11,
+            color: ColorConstant.color999999,
+          ),
+          style: TextStyle(
+            fontSize: 16,
+            color: ColorConstant.color666666,
+          ),
+        ),
       ),
     );
+  }
+
+  Widget _renderBackground() {
+    return Positioned.fill(
+      child: Image.asset(
+        'assets/images/bg_place.png',
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+  Widget _renderContent() {
+    return inputEmpty
+        ? Positioned.fill(
+            child: Container(
+              alignment: Alignment.topCenter,
+              padding: EdgeInsets.only(left: 16, top: 40, right: 16),
+              child: Text(
+                'only support search \n beijing / shanghai / guangzhou / shenzhen',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: ColorConstant.color333333,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          )
+        : _renderSearchResult();
+  }
+
+  Widget _renderSearchResult() {
+    return placeList.isEmpty
+        ? Positioned.fill(
+            child: Container(
+              alignment: Alignment.topCenter,
+              padding: EdgeInsets.only(left: 16, top: 40, right: 16),
+              child: Text(
+                'Sad, Result Is Empty!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: ColorConstant.color333333,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          )
+        : Positioned.fill(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _renderCityList(),
+              ],
+            ),
+          );
   }
 
   Widget _renderCityList() {
     return Container(
       height: 300,
       child: ListView.builder(
-        itemCount: 10,
+        itemCount: placeList.length,
         itemBuilder: (context, index) {
+          var item = placeList[index];
           return GestureDetector(
             onTap: () {
               Navigator.of(context).pushNamed('/weather');
@@ -67,7 +158,8 @@ class HomePage extends StatelessWidget {
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
-                color: index % 2 == 0 ? Colors.amber : Colors.brown,
+                // color: index % 2 == 0 ? Colors.amber : Colors.brown,
+                color: Colors.white,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black12,
@@ -82,7 +174,7 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'placeName $index',
+                    item.name,
                     style: TextStyle(
                       color: ColorConstant.color333333,
                       fontSize: 20,
@@ -90,7 +182,14 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'placeAddress $index',
+                    '邮政编码：${item.adCode}',
+                    style: TextStyle(
+                      color: ColorConstant.color666666,
+                      fontSize: 14,
+                    ),
+                  ),
+                  Text(
+                    '经度：${item.lng} 纬度：${item.lat}',
                     style: TextStyle(
                       color: ColorConstant.color666666,
                       fontSize: 14,

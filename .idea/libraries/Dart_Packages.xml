@@ -72,6 +72,13 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_svg">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/flutter_svg-1.0.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_web_plugins">
           <value>
             <list>
@@ -142,6 +149,20 @@
             </list>
           </value>
         </entry>
+        <entry key="path_drawing">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path_drawing-1.0.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="path_parsing">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path_parsing-1.0.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="path_provider">
           <value>
             <list>
@@ -195,6 +216,13 @@
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/pedantic-1.11.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="petitparser">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/petitparser-4.1.0/lib" />
             </list>
           </value>
         </entry>
@@ -345,6 +373,13 @@
             </list>
           </value>
         </entry>
+        <entry key="xml">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/xml-5.1.2/lib" />
+            </list>
+          </value>
+        </entry>
       </option>
     </properties>
     <CLASSES>
@@ -358,6 +393,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/ffi-1.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/file-6.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/flutter-0.10.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/flutter_svg-1.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/flutter_web_plugins-0.10.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/glob-2.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/http-0.13.1/lib" />
@@ -368,6 +404,8 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/mp_build_tools-0.10.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/mpcore-0.10.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path-1.8.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path_drawing-1.0.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path_parsing-1.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path_provider-2.0.7/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path_provider_android-2.0.8/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path_provider_ios-2.0.7/lib" />
@@ -376,6 +414,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path_provider_platform_interface-2.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path_provider_windows-2.0.4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/pedantic-1.11.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/petitparser-4.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/platform-3.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/plugin_platform_interface-2.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/process-4.2.4/lib" />
@@ -397,6 +436,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/watcher-1.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/win32-2.2.10/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/xdg_directories-0.2.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/xml-5.1.2/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
