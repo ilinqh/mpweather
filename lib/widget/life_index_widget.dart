@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:weather_project/bean/daily.dart';
 import 'package:weather_project/color_constant.dart';
 
 class LifeIndexWidget extends StatelessWidget {
-  const LifeIndexWidget({Key? key}) : super(key: key);
+  final Daily daily;
+
+  const LifeIndexWidget({Key? key, required this.daily}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +52,12 @@ class LifeIndexWidget extends StatelessWidget {
         _renderLifeIndexItem(
           iconPath: 'assets/images/ic_coldrisk.png',
           itemTitle: '感冒',
-          itemText: 'coldRiskText',
+          itemText: daily.lifeIndex?.coldRisk?[0].desc ?? '',
         ),
         _renderLifeIndexItem(
           iconPath: 'assets/images/ic_dressing.png',
           itemTitle: '穿衣',
-          itemText: 'dressingText',
+          itemText: daily.lifeIndex?.dressing?[0].desc ?? '',
         ),
       ],
     );
@@ -66,12 +69,12 @@ class LifeIndexWidget extends StatelessWidget {
         _renderLifeIndexItem(
           iconPath: 'assets/images/ic_ultraviolet.png',
           itemTitle: '实时紫外线',
-          itemText: 'ultravioletText',
+          itemText: daily.lifeIndex?.ultraviolet?[0].desc ?? '',
         ),
         _renderLifeIndexItem(
           iconPath: 'assets/images/ic_carwashing.png',
           itemTitle: '洗车',
-          itemText: 'carWashingText',
+          itemText: daily.lifeIndex?.carWashing?[0].desc ?? '',
         ),
       ],
     );

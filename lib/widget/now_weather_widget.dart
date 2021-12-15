@@ -12,11 +12,6 @@ class NowWeatherWidget extends StatelessWidget {
     required this.realtime,
   }) : super(key: key);
 
-  final _subTitleStyle = const TextStyle(
-    color: Colors.white,
-    fontSize: 18,
-  );
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,22 +66,12 @@ class NowWeatherWidget extends StatelessWidget {
               fontSize: 70,
             ),
           ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                Sky.getSky(realtime.skycon).info,
-                style: _subTitleStyle,
-              ),
-              Text(
-                ' | ',
-                style: _subTitleStyle,
-              ),
-              Text(
-                '空气指数 ${realtime.airQuality?.aqi?.chn.toString() ?? ''}',
-                style: _subTitleStyle,
-              ),
-            ],
+          Text(
+            '${Sky.getSky(realtime.skycon).info} | 空气指数 ${realtime.airQuality?.aqi?.chn.toString() ?? ''}',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+            ),
           ),
         ],
       ),

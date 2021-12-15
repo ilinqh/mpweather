@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:weather_project/bean/daily.dart';
 import 'package:weather_project/color_constant.dart';
 import 'package:weather_project/widget/forecast_item_widget.dart';
 
 class ForecastWidget extends StatelessWidget {
-  const ForecastWidget({Key? key}) : super(key: key);
+  final Daily daily;
+
+  const ForecastWidget({Key? key, required this.daily}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +34,17 @@ class ForecastWidget extends StatelessWidget {
               style: TextStyle(color: ColorConstant.colorPrimary, fontSize: 20),
             ),
           ),
-          SizedBox(height: 20),
           ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            itemCount: 6,
+            itemCount: daily.temperature?.length ?? 0,
             itemBuilder: (context, index) {
-              return ForecastItemWidget();
+              var skycon = daily.skycon![index];
+              var temperature = daily.temperature![index];
+              return ForecastItemWidget(
+                skycon: skycon,
+                temperature: temperature,
+              );
             },
           )
         ],
