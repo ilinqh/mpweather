@@ -5,7 +5,7 @@ class Sky {
 
   Sky(this.info, this.icon, this.bg);
 
-  var _sky = {
+  static var _sky = {
     "CLEAR_DAY": Sky(
       '晴',
       'assets/images/ic_clear_day.png',
@@ -118,7 +118,7 @@ class Sky {
     )
   };
 
-  Sky getSky(String skycon) {
+  static Sky getSky(String skycon) {
     return _sky[skycon] ?? _sky['CLEAR_DAY']!;
   }
 }

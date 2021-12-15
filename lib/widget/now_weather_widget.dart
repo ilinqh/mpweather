@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:weather_project/bean/realtime.dart';
+import 'package:weather_project/bean/sky.dart';
 
 class NowWeatherWidget extends StatelessWidget {
-  const NowWeatherWidget({Key? key}) : super(key: key);
+  final String placeName;
+  final Realtime realtime;
+
+  const NowWeatherWidget({
+    Key? key,
+    required this.placeName,
+    required this.realtime,
+  }) : super(key: key);
 
   final _subTitleStyle = const TextStyle(
     color: Colors.white,
@@ -24,7 +33,7 @@ class NowWeatherWidget extends StatelessWidget {
   }
 
   Widget _renderSkyBg() {
-    return Image.asset('assets/images/bg_clear_day.jpg', fit: BoxFit.cover);
+    return Image.asset(Sky.getSky(realtime.skycon).bg, fit: BoxFit.cover);
   }
 
   Widget _renderTitle() {
@@ -37,7 +46,7 @@ class NowWeatherWidget extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 60),
         alignment: Alignment.center,
         child: Text(
-          'placeName',
+          placeName,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
@@ -56,7 +65,7 @@ class NowWeatherWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'currentTemp',
+            '${realtime.temperature.toInt().toString()} ℃',
             style: TextStyle(
               color: Colors.white,
               fontSize: 70,
@@ -66,7 +75,7 @@ class NowWeatherWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'currentSky',
+                Sky.getSky(realtime.skycon).info,
                 style: _subTitleStyle,
               ),
               Text(
@@ -74,7 +83,7 @@ class NowWeatherWidget extends StatelessWidget {
                 style: _subTitleStyle,
               ),
               Text(
-                'currentAQI',
+                '空气指数 ${realtime.airQuality?.aqi?.chn.toString() ?? ''}',
                 style: _subTitleStyle,
               ),
             ],

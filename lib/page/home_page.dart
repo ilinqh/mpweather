@@ -149,7 +149,14 @@ class _HomePageState extends State<HomePage> {
           var item = placeList[index];
           return GestureDetector(
             onTap: () {
-              Navigator.of(context).pushNamed('/weather');
+              Navigator.of(context).pushNamed(
+                '/weather',
+                arguments: {
+                  'lat': item.lat,
+                  'lng': item.lng,
+                  'placeName': item.name,
+                },
+              );
             },
             child: Container(
               height: 130,
@@ -158,7 +165,6 @@ class _HomePageState extends State<HomePage> {
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
-                // color: index % 2 == 0 ? Colors.amber : Colors.brown,
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
