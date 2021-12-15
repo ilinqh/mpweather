@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:mpcore/mpcore.dart';
 import 'package:weather_project/bean/daily.dart';
 import 'package:weather_project/bean/realtime.dart';
-import 'package:weather_project/network/constant.dart';
+import 'package:weather_project/constant.dart';
 import 'package:weather_project/widget/forecast_widget.dart';
 import 'package:weather_project/widget/life_index_widget.dart';
 import 'package:weather_project/widget/now_weather_widget.dart';

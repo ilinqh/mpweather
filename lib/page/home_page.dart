@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:mpcore/mpcore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weather_project/bean/place.dart';
 import 'package:weather_project/color_constant.dart';
+import 'package:weather_project/constant.dart';
 import 'package:weather_project/network/place_service.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,6 +30,12 @@ class _HomePageState extends State<HomePage> {
       });
   }
 
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   Future searchPlace({required String place}) async {
     setState(() {
       placeList.clear();
@@ -38,8 +48,22 @@ class _HomePageState extends State<HomePage> {
     placeList.addAll(response);
   }
 
+  Future checkCache() async {
+    var placeInfo =
+        (await SharedPreferences.getInstance()).get(KEY_PLACE_INFO) as String?;
+    if (placeInfo?.isNotEmpty == true) {
+      var map = json.decode(placeInfo!);
+      Navigator.of(context).pop();
+      Navigator.of(context).pushNamed(
+        '/weather',
+        arguments: map,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    checkCache();
     return MPScaffold(
       name: 'home_page',
       appBar: MPAppBar(
@@ -148,15 +172,18 @@ class _HomePageState extends State<HomePage> {
         itemBuilder: (context, index) {
           var item = placeList[index];
           return GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed(
+            onTap: () async {
+              var map = {
+                'lat': item.lat,
+                'lng': item.lng,
+                'placeName': item.name,
+              };
+              final _ = Navigator.of(context).pushNamed(
                 '/weather',
-                arguments: {
-                  'lat': item.lat,
-                  'lng': item.lng,
-                  'placeName': item.name,
-                },
+                arguments: map,
               );
+              (await SharedPreferences.getInstance())
+                  .setString(KEY_PLACE_INFO, json.encode(map));
             },
             child: Container(
               height: 130,

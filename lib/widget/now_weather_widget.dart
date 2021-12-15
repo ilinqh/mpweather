@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weather_project/bean/realtime.dart';
 import 'package:weather_project/bean/sky.dart';
+import 'package:weather_project/constant.dart';
 
 class NowWeatherWidget extends StatelessWidget {
   final String placeName;
@@ -21,6 +23,7 @@ class NowWeatherWidget extends StatelessWidget {
         children: [
           _renderSkyBg(),
           _renderTitle(),
+          _renderHomeBtn(),
           _renderBody(),
         ],
       ),
@@ -49,6 +52,33 @@ class NowWeatherWidget extends StatelessWidget {
             fontSize: 22,
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _renderHomeBtn() {
+    return Positioned(
+      top: 20,
+      left: 15,
+      child: Builder(
+        builder: (context) {
+          return GestureDetector(
+            onTap: () async {
+              (await SharedPreferences.getInstance())
+                  .setString(KEY_PLACE_INFO, '');
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed('/');
+            },
+            child: Container(
+              width: 30,
+              height: 30,
+              child: Image.asset(
+                'assets/images/ic_home.png',
+                fit: BoxFit.contain,
+              ),
+            ),
+          );
+        },
       ),
     );
   }
