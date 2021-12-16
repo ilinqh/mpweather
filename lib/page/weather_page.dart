@@ -6,8 +6,10 @@ import 'package:mpcore/mpcore.dart';
 import 'package:weather_project/bean/daily.dart';
 import 'package:weather_project/bean/realtime.dart';
 import 'package:weather_project/constant.dart';
+import 'package:weather_project/widget/back_home_button_widget.dart';
 import 'package:weather_project/widget/forecast_widget.dart';
 import 'package:weather_project/widget/life_index_widget.dart';
+import 'package:weather_project/widget/loading_widget.dart';
 import 'package:weather_project/widget/now_weather_widget.dart';
 
 class WeatherPage extends StatefulWidget {
@@ -37,15 +39,26 @@ class _WeatherPageState extends State<WeatherPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     if (_arguments == null) {
       _arguments = ModalRoute.of(context)?.settings.arguments as Map?;
       _getRealtime(lng: _arguments!['lng'], lat: _arguments!['lat']);
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MPScaffold(
       name: 'weather_page',
       body: _realtime == null
-          ? Container(color: Colors.red)
+          ? Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                BackHomeButtonWidget(loading: true),
+                LoadingWidget(),
+              ],
+            )
           : ListView(
               children: [
                 NowWeatherWidget(

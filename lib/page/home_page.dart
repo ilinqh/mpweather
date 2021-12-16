@@ -62,8 +62,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     checkCache();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MPScaffold(
       name: 'home_page',
       appBar: MPAppBar(

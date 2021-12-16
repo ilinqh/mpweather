@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({Key? key}) : super(key: key);
@@ -7,7 +6,11 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SvgPicture.asset('assets/images/loading.svg'),
+      child: Image.asset(
+        'assets/images/loading.svg',
+        width: 100,
+        height: 100,
+      ),
     );
   }
 }
