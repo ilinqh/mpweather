@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _controller = TextEditingController()
       ..addListener(() {
-        searchPlace(place: _controller.text);
+        _searchPlace(place: _controller.text);
       });
   }
 
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  Future searchPlace({required String place}) async {
+  Future _searchPlace({required String place}) async {
     setState(() {
       placeList.clear();
       inputEmpty = place.isEmpty;
@@ -48,12 +48,14 @@ class _HomePageState extends State<HomePage> {
     placeList.addAll(response);
   }
 
-  Future checkCache() async {
+  Future _checkCache() async {
     var placeInfo =
         (await SharedPreferences.getInstance()).get(KEY_PLACE_INFO) as String?;
-    if (placeInfo?.isNotEmpty == true) {
+    if (placeInfo?.isNotEmpty == true && mounted) {
       var map = json.decode(placeInfo!);
-      Navigator.of(context).pop();
+      if (Navigator.of(context).canPop()) {
+        Navigator.of(context).pop();
+      }
       Navigator.of(context).pushNamed(
         '/weather',
         arguments: map,
@@ -64,7 +66,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    checkCache();
+    _checkCache();
   }
 
   @override

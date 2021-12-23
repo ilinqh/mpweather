@@ -53,7 +53,7 @@ class _WeatherPageState extends State<WeatherPage> {
       name: 'weather_page',
       body: _realtime == null
           ? Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BackHomeButtonWidget(loading: true),
                 LoadingWidget(),

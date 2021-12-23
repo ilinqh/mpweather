@@ -15,16 +15,19 @@ class NowWeatherWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 530,
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          _renderSkyBg(),
-          _renderTitle(),
-          BackHomeButtonWidget(),
-          _renderBody(),
-        ],
+    return ClipRRect(
+      borderRadius: BorderRadius.vertical(bottom: Radius.circular(12)),
+      child: Container(
+        height: 530,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            _renderSkyBg(),
+            _renderTitle(),
+            BackHomeButtonWidget(),
+            _renderBody(),
+          ],
+        ),
       ),
     );
   }

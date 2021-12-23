@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:mpcore/mpcore.dart';
 import 'package:weather_project/page/home_page.dart';
+import 'package:weather_project/page/main_page.dart';
 import 'package:weather_project/page/weather_page.dart';
 
 void main() {
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'MPFlutter Demo',
       color: Colors.blue,
       routes: {
-        '/': (context) => HomePage(),
+        '/': (context) => MainPage(),
+        '/home': (context) => HomePage(),
         '/weather': (context) => WeatherPage(),
       },
       navigatorObservers: [MPCore.getNavigationObserver()],
