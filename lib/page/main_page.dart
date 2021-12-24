@@ -148,8 +148,7 @@ class _MainPageState extends State<MainPage> {
       right: 0,
       child: GestureDetector(
         onTap: () {
-          print('fjdkfjdklf');
-          // Navigator.of(context).pushNamed('/search');
+          Navigator.of(context).pushNamed('/search');
         },
         child: Container(
           width: 72,

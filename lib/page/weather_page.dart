@@ -7,7 +7,6 @@ import 'package:weather_project/bean/daily.dart';
 import 'package:weather_project/bean/place.dart';
 import 'package:weather_project/bean/realtime.dart';
 import 'package:weather_project/constant.dart';
-import 'package:weather_project/widget/back_home_button_widget.dart';
 import 'package:weather_project/widget/forecast_widget.dart';
 import 'package:weather_project/widget/life_index_widget.dart';
 import 'package:weather_project/widget/loading_widget.dart';
@@ -57,19 +56,10 @@ class _WeatherPageState extends State<WeatherPage> {
     return MPScaffold(
       name: _place?.simpleName ?? '',
       body: _realtime == null
-          ? Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                BackHomeButtonWidget(loading: true),
-                LoadingWidget(),
-              ],
-            )
+          ? Center(child: LoadingWidget())
           : ListView(
               children: [
-                NowWeatherWidget(
-                  placeName: _place!.name,
-                  realtime: _realtime!,
-                ),
+                NowWeatherWidget(realtime: _realtime!),
                 _daily == null ? Container() : ForecastWidget(daily: _daily!),
                 _daily == null ? Container() : LifeIndexWidget(daily: _daily!),
               ],

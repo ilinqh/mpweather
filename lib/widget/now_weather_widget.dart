@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:weather_project/bean/realtime.dart';
 import 'package:weather_project/bean/sky.dart';
-import 'package:weather_project/widget/back_home_button_widget.dart';
 
 class NowWeatherWidget extends StatelessWidget {
-  final String placeName;
   final Realtime realtime;
 
   const NowWeatherWidget({
     Key? key,
-    required this.placeName,
     required this.realtime,
   }) : super(key: key);
 
@@ -23,8 +20,6 @@ class NowWeatherWidget extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             _renderSkyBg(),
-            // _renderTitle(),
-            // BackHomeButtonWidget(),
             _renderBody(),
           ],
         ),
@@ -34,28 +29,6 @@ class NowWeatherWidget extends StatelessWidget {
 
   Widget _renderSkyBg() {
     return Image.asset(Sky.getSky(realtime.skycon).bg, fit: BoxFit.cover);
-  }
-
-  Widget _renderTitle() {
-    return Positioned(
-      top: 0,
-      left: 0,
-      right: 0,
-      child: Container(
-        height: 70,
-        margin: EdgeInsets.symmetric(horizontal: 60),
-        alignment: Alignment.center,
-        child: Text(
-          placeName,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 22,
-          ),
-        ),
-      ),
-    );
   }
 
   Widget _renderBody() {
