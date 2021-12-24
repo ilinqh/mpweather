@@ -23,8 +23,8 @@ class NowWeatherWidget extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             _renderSkyBg(),
-            _renderTitle(),
-            BackHomeButtonWidget(),
+            // _renderTitle(),
+            // BackHomeButtonWidget(),
             _renderBody(),
           ],
         ),

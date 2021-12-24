@@ -10,7 +10,12 @@ class PageItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pushNamed(
+          '/place_list',
+          arguments: {'place': place},
+        );
+      },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: Container(

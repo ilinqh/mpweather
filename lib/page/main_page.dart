@@ -12,8 +12,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   late MPPageController _pageController;
-  var _bgNotifier = ValueNotifier<double>(0);
-  var _progressNotifier = ValueNotifier<int>(0);
+  var _notifier = ValueNotifier<double>(0);
 
   @override
   void initState() {
@@ -29,100 +28,15 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      bottom: true,
-      child: MPScaffold(
-        body: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            ValueListenableBuilder<double>(
-              valueListenable: _bgNotifier,
-              builder: (context, value, widget) {
-                return Container(
-                  color: Color.lerp(
-                    Color(0xFF673AB7),
-                    Color(0xFFF44336),
-                    value,
-                  ),
-                );
-              },
-            ),
-            Column(
-              children: [
-                _renderHeader(),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
-                  height: MediaQuery.of(context).size.height * 0.7,
-                  child: MPPageView(
-                    controller: _pageController
-                      ..addListener(() {
-                        _bgNotifier.value = _pageController.page / 4;
-                        _progressNotifier.value = _pageController.page;
-                      }),
-                    children: <Widget>[
-                      PageItemWidget(
-                        Place.beijing,
-                        'assets/images/bg_beijing.jpg',
-                      ),
-                      PageItemWidget(
-                        Place.shanghai,
-                        'assets/images/bg_shanghai.png',
-                      ),
-                      PageItemWidget(
-                        Place.guangzhou,
-                        'assets/images/bg_guangzhou.png',
-                      ),
-                      PageItemWidget(
-                        Place.shenzhen,
-                        'assets/images/bg_shenzhen.jpg',
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 12, left: 48, right: 48),
-                  width: 300,
-                  height: 8,
-                  child: Stack(
-                    children: [
-                      Container(
-                        width: 300,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                      ),
-                      ValueListenableBuilder<int>(
-                        valueListenable: _progressNotifier,
-                        builder: (context, value, widget) {
-                          return Container(
-                            width: 300 * value / 3,
-                            decoration: BoxDecoration(
-                              color: Color.lerp(
-                                Color(0xFFF44336),
-                                Color(0xFF673AB7),
-                                value / 3,
-                              ),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+    return MPScaffold(
+      backgroundColor: Color(0xFFAA3DB7),
+      body: Column(
+        children: [
+          _renderHeader(),
+          _renderList(),
+        ],
       ),
+      floatingBody: _renderFloating(),
     );
   }
 
@@ -146,6 +60,120 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _renderList() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      height: MediaQuery.of(context).size.height * 0.7,
+      child: Column(
+        children: [
+          Expanded(
+            child: MPPageView(
+              controller: _pageController
+                ..addListener(() {
+                  _notifier.value = _pageController.page / 3;
+                }),
+              children: <Widget>[
+                PageItemWidget(
+                  Place.beijing,
+                  'assets/images/bg_beijing.jpg',
+                ),
+                PageItemWidget(
+                  Place.shanghai,
+                  'assets/images/bg_shanghai.png',
+                ),
+                PageItemWidget(
+                  Place.guangzhou,
+                  'assets/images/bg_guangzhou.png',
+                ),
+                PageItemWidget(
+                  Place.shenzhen,
+                  'assets/images/bg_shenzhen.jpg',
+                ),
+              ],
+            ),
+          ),
+          _renderProgress(),
+          SizedBox(height: 24),
+        ],
+      ),
+    );
+  }
+
+  Widget _renderProgress() {
+    return Stack(
+      alignment: Alignment.centerLeft,
+      children: [
+        Container(
+          width: 300,
+          height: 8,
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(4),
+          ),
+        ),
+        ValueListenableBuilder<double>(
+          valueListenable: _notifier,
+          builder: (context, value, widget) {
+            return Container(
+              width: 300 * value,
+              height: 8,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: Color.lerp(
+                  Color(0xFFF44336),
+                  Color(0xFF673AB7),
+                  value,
+                ),
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _renderFloating() {
+    return Positioned(
+      bottom: 80,
+      right: 0,
+      child: GestureDetector(
+        onTap: () {
+          print('fjdkfjdklf');
+          // Navigator.of(context).pushNamed('/search');
+        },
+        child: Container(
+          width: 72,
+          height: 64,
+          padding: EdgeInsets.only(left: 8, top: 8, right: 16, bottom: 8),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+            color: Colors.deepPurpleAccent.withOpacity(0.4),
+            borderRadius: BorderRadius.horizontal(left: Radius.circular(30)),
+          ),
+          child: ClipOval(
+            child: Container(
+              width: 48,
+              height: 48,
+              alignment: Alignment.center,
+              color: Colors.deepPurpleAccent.withOpacity(0.6),
+              child: MPIcon(
+                MaterialIcons.search,
+                color: Colors.white60,
+                size: 32,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

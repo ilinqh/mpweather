@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mpcore/mpcore.dart';
 import 'package:weather_project/bean/daily.dart';
+import 'package:weather_project/bean/place.dart';
 import 'package:weather_project/bean/realtime.dart';
 import 'package:weather_project/constant.dart';
 import 'package:weather_project/widget/back_home_button_widget.dart';
@@ -21,6 +22,7 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   Map? _arguments;
+  Place? _place;
   Realtime? _realtime;
   Daily? _daily;
 
@@ -43,14 +45,17 @@ class _WeatherPageState extends State<WeatherPage> {
     super.didChangeDependencies();
     if (_arguments == null) {
       _arguments = ModalRoute.of(context)?.settings.arguments as Map?;
-      _getRealtime(lng: _arguments!['lng'], lat: _arguments!['lat']);
+      _place = _arguments?['place'];
+      if (_place != null) {
+        _getRealtime(lng: _place!.lng, lat: _place!.lat);
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return MPScaffold(
-      name: 'weather_page',
+      name: _place?.simpleName ?? '',
       body: _realtime == null
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +67,7 @@ class _WeatherPageState extends State<WeatherPage> {
           : ListView(
               children: [
                 NowWeatherWidget(
-                  placeName: _arguments!['placeName'],
+                  placeName: _place!.name,
                   realtime: _realtime!,
                 ),
                 _daily == null ? Container() : ForecastWidget(daily: _daily!),

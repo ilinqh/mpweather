@@ -8,18 +8,16 @@ import 'package:weather_project/color_constant.dart';
 import 'package:weather_project/constant.dart';
 import 'package:weather_project/network/place_service.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class SearchPage extends StatefulWidget {
+  const SearchPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<SearchPage> createState() => _SearchPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SearchPageState extends State<SearchPage> {
   late TextEditingController _controller;
   var placeList = <Place>[];
-
-  var inputEmpty = true;
 
   @override
   void initState() {
@@ -39,7 +37,6 @@ class _HomePageState extends State<HomePage> {
   Future _searchPlace({required String place}) async {
     setState(() {
       placeList.clear();
-      inputEmpty = place.isEmpty;
     });
     if (place.isEmpty) {
       return;
@@ -48,42 +45,15 @@ class _HomePageState extends State<HomePage> {
     placeList.addAll(response);
   }
 
-  Future _checkCache() async {
-    var placeInfo =
-        (await SharedPreferences.getInstance()).get(KEY_PLACE_INFO) as String?;
-    if (placeInfo?.isNotEmpty == true && mounted) {
-      var map = json.decode(placeInfo!);
-      if (Navigator.of(context).canPop()) {
-        Navigator.of(context).pop();
-      }
-      Navigator.of(context).pushNamed(
-        '/weather',
-        arguments: map,
-      );
-    }
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _checkCache();
-  }
-
   @override
   Widget build(BuildContext context) {
     return MPScaffold(
-      name: 'home_page',
+      name: 'search_page',
       appBar: MPAppBar(
         context: context,
-        leading: SizedBox(),
         title: _renderActionBar(),
       ),
-      body: Stack(
-        children: [
-          _renderBackground(),
-          _renderContent(),
-        ],
-      ),
+      body: _renderPlaceList(),
     );
   }
 
@@ -116,62 +86,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _renderBackground() {
-    return Positioned.fill(
-      child: Image.asset(
-        'assets/images/bg_place.png',
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-
-  Widget _renderContent() {
-    return inputEmpty
-        ? Positioned.fill(
-            child: Container(
-              alignment: Alignment.topCenter,
-              padding: EdgeInsets.only(left: 16, top: 40, right: 16),
-              child: Text(
-                'only support search \n beijing / shanghai / guangzhou / shenzhen',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: ColorConstant.color333333,
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          )
-        : _renderSearchResult();
-  }
-
-  Widget _renderSearchResult() {
-    return placeList.isEmpty
-        ? Positioned.fill(
-            child: Container(
-              alignment: Alignment.topCenter,
-              padding: EdgeInsets.only(left: 16, top: 40, right: 16),
-              child: Text(
-                'Sad, Result Is Empty!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: ColorConstant.color333333,
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          )
-        : Positioned.fill(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                _renderCityList(),
-              ],
-            ),
-          );
-  }
-
-  Widget _renderCityList() {
+  Widget _renderPlaceList() {
     return Container(
       height: 300,
       child: ListView.builder(
@@ -180,17 +95,10 @@ class _HomePageState extends State<HomePage> {
           var item = placeList[index];
           return GestureDetector(
             onTap: () async {
-              var map = {
-                'lat': item.lat,
-                'lng': item.lng,
-                'placeName': item.name,
-              };
               final _ = Navigator.of(context).pushNamed(
                 '/weather',
-                arguments: map,
+                arguments: {'place': item},
               );
-              (await SharedPreferences.getInstance())
-                  .setString(KEY_PLACE_INFO, json.encode(map));
             },
             child: Container(
               height: 130,
