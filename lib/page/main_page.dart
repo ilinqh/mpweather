@@ -46,8 +46,8 @@ class _MainPageState extends State<MainPage> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.asset(
-            'assets/images/logo.png',
+          Image.network(
+            'https://gitee.com/llqinhh/mpweather-images/raw/master/logo.png',
             width: 64,
             height: 64,
           ),
@@ -85,19 +85,19 @@ class _MainPageState extends State<MainPage> {
               children: <Widget>[
                 PageItemWidget(
                   Place.beijing,
-                  'assets/images/bg_beijing.jpg',
+                  'https://gitee.com/llqinhh/mpweather-images/raw/master/bg_beijing.jpg',
                 ),
                 PageItemWidget(
                   Place.shanghai,
-                  'assets/images/bg_shanghai.png',
+                  'https://gitee.com/llqinhh/mpweather-images/raw/master/bg_shanghai.png',
                 ),
                 PageItemWidget(
                   Place.guangzhou,
-                  'assets/images/bg_guangzhou.png',
+                  'https://gitee.com/llqinhh/mpweather-images/raw/master/bg_guangzhou.png',
                 ),
                 PageItemWidget(
                   Place.shenzhen,
-                  'assets/images/bg_shenzhen.jpg',
+                  'https://gitee.com/llqinhh/mpweather-images/raw/master/bg_shenzhen.jpg',
                 ),
               ],
             ),

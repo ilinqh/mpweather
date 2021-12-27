@@ -11,11 +11,10 @@ class PageItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.of(context).pushNamed(
-        //   '/place_list',
-        //   arguments: {'place': place},
-        // );
-        Navigator.of(context).pushNamed('/search');
+        Navigator.of(context).pushNamed(
+          '/place_list',
+          arguments: {'place': place},
+        );
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
@@ -40,7 +39,7 @@ class PageItemWidget extends StatelessWidget {
               Container(
                 height: 200,
                 alignment: Alignment.topLeft,
-                child: Image.asset(imgUrl, fit: BoxFit.cover),
+                child: Image.network(imgUrl, fit: BoxFit.cover),
               ),
               Spacer(),
               Container(

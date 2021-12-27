@@ -6,8 +6,8 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.asset(
-        'assets/images/loading.svg',
+      child: Image.network(
+        'https://gitee.com/llqinhh/mpweather-images/raw/master/loading.svg',
         width: 100,
         height: 100,
       ),

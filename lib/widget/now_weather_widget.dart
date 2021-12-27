@@ -28,7 +28,7 @@ class NowWeatherWidget extends StatelessWidget {
   }
 
   Widget _renderSkyBg() {
-    return Image.asset(Sky.getSky(realtime.skycon).bg, fit: BoxFit.cover);
+    return Image.network(Sky.getSky(realtime.skycon).bg, fit: BoxFit.cover);
   }
 
   Widget _renderBody() {

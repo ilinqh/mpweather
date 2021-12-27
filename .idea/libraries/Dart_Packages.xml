@@ -68,14 +68,14 @@
         <entry key="flutter">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/flutter-0.10.2/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/flutter-0.11.0/lib" />
             </list>
           </value>
         </entry>
         <entry key="flutter_web_plugins">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/flutter_web_plugins-0.10.2/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/flutter_web_plugins-0.11.0/lib" />
             </list>
           </value>
         </entry>
@@ -124,14 +124,14 @@
         <entry key="mp_build_tools">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/mp_build_tools-0.10.2/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/mp_build_tools-0.11.0/lib" />
             </list>
           </value>
         </entry>
         <entry key="mpcore">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/mpcore-0.10.2/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/mpcore-0.11.0/lib" />
             </list>
           </value>
         </entry>
@@ -219,13 +219,6 @@
             </list>
           </value>
         </entry>
-        <entry key="shared_preferences">
-          <value>
-            <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/shared_preferences-2.0.8/lib" />
-            </list>
-          </value>
-        </entry>
         <entry key="source_span">
           <value>
             <list>
@@ -308,16 +301,16 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/dart_console-1.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/ffi-1.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/file-6.1.2/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/flutter-0.10.2/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/flutter_web_plugins-0.10.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/flutter-0.11.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/flutter_web_plugins-0.11.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/glob-2.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/http-0.13.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/http_parser-4.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/json_patch-2.1.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/meta-1.3.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/mime_type-1.0.0/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/mp_build_tools-0.10.2/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/mpcore-0.10.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/mp_build_tools-0.11.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/mpcore-0.11.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path-1.8.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path_provider-2.0.7/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/path_provider_android-2.0.8/lib" />
@@ -330,7 +323,6 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/platform-3.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/plugin_platform_interface-2.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/process-4.2.4/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/shared_preferences-2.0.8/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/source_span-1.8.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/string_scanner-1.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.mpflutter.com/term_glyph-1.2.0/lib" />
