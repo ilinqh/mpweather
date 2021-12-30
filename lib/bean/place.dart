@@ -6,6 +6,22 @@ class Place {
 
   Place(this.adCode, this.name, this.lng, this.lat);
 
+  Place.fromJson(Map<String, dynamic> json) {
+    adCode = json['adCode'];
+    name = json['name'];
+    lng = json['lng'];
+    lat = json['lat'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['adCode'] = this.adCode;
+    data['name'] = this.name;
+    data['lng'] = this.lng;
+    data['lat'] = this.lat;
+    return data;
+  }
+
   static final beijing = Place('110000', '北京市', '116.407526', '39.90403');
 
   static final shanghai = Place('310000', '上海市', '121.473701', '31.230416');
