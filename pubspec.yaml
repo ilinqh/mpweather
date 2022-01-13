@@ -17,4 +17,4 @@ dependency_overrides:
   mpcore: "0.11.0"
 flutter:
   assets:
-    - https://gitee.com/llqinhh/mpweather-images/raw/master/
+    - assets/images/

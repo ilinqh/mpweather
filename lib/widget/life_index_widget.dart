@@ -50,12 +50,12 @@ class LifeIndexWidget extends StatelessWidget {
     return Row(
       children: [
         _renderLifeIndexItem(
-          iconPath: 'https://gitee.com/llqinhh/mpweather-images/raw/master/ic_coldrisk.png',
+          iconPath: 'assets/images/ic_coldrisk.png',
           itemTitle: '感冒',
           itemText: daily.lifeIndex?.coldRisk?[0].desc ?? '',
         ),
         _renderLifeIndexItem(
-          iconPath: 'https://gitee.com/llqinhh/mpweather-images/raw/master/ic_dressing.png',
+          iconPath: 'assets/images/ic_dressing.png',
           itemTitle: '穿衣',
           itemText: daily.lifeIndex?.dressing?[0].desc ?? '',
         ),
@@ -67,12 +67,12 @@ class LifeIndexWidget extends StatelessWidget {
     return Row(
       children: [
         _renderLifeIndexItem(
-          iconPath: 'https://gitee.com/llqinhh/mpweather-images/raw/master/ic_ultraviolet.png',
+          iconPath: 'assets/images/ic_ultraviolet.png',
           itemTitle: '实时紫外线',
           itemText: daily.lifeIndex?.ultraviolet?[0].desc ?? '',
         ),
         _renderLifeIndexItem(
-          iconPath: 'https://gitee.com/llqinhh/mpweather-images/raw/master/ic_carwashing.png',
+          iconPath: 'assets/images/ic_carwashing.png',
           itemTitle: '洗车',
           itemText: daily.lifeIndex?.carWashing?[0].desc ?? '',
         ),
@@ -94,7 +94,7 @@ class LifeIndexWidget extends StatelessWidget {
               width: 36,
               height: 36,
               margin: EdgeInsets.only(left: 20),
-              child: Image.network(iconPath),
+              child: Image.asset(iconPath),
             ),
             SizedBox(width: 20),
             Column(

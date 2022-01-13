@@ -25,7 +25,7 @@ class ForecastItemWidget extends StatelessWidget {
           Container(
             height: 20,
             width: 20,
-            child: Image.network(Sky.getSky(skycon.value).icon),
+            child: Image.asset(Sky.getSky(skycon.value).icon),
           ),
           Expanded(
             flex: 3,

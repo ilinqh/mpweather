@@ -39,7 +39,7 @@ class PageItemWidget extends StatelessWidget {
               Container(
                 height: 200,
                 alignment: Alignment.topLeft,
-                child: Image.network(imgUrl, fit: BoxFit.cover),
+                child: Image.asset(imgUrl, fit: BoxFit.cover),
               ),
               Spacer(),
               Container(
